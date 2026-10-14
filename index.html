@@ -29,6 +29,8 @@
     .award-item:first-child .award-icon{color:#c89420}
     .award-item:nth-child(2) .award-icon{color:#4f78b8}
     .award-item:nth-child(3) .award-icon{color:#7b5aa6}
+    .award-item:first-child .award-icon svg{display:none}
+    .award-item:first-child .award-icon::after{content:"🏆";font-size:20px;line-height:1}
     .award-item:nth-child(2) .award-icon svg{display:none}
     .award-item:nth-child(2) .award-icon::after{content:"🏅";font-size:20px;line-height:1}
     .publication-award-chip svg{display:none}
@@ -99,6 +101,11 @@
         "affiliation": { "@id": "https://axis.korea.ac.kr/#organization" },
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "Dongguk University" },
         "knowsAbout": ["Haptics", "Virtual Reality", "Human-Computer Interaction"],
+        "award": [
+          "IEEE ISMAR 2026 Best Paper Award (Top 1.1%)",
+          "The 4th Korea Haptics Conference Best Paper Honorable Mention Award",
+          "Kwanjeong Foundation Fellow"
+        ],
         "sameAs": ["https://kr.linkedin.com/in/jaehyeong-hwang-205082207"]
       },
       {
