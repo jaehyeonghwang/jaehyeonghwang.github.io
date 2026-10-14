@@ -43,6 +43,25 @@ if (awardText && awardName && awardPercent) {
   });
 }
 
+const hapticsAwardUrl = 'https://haptics.or.kr/conference/2026/award.php';
+const hapticsAwardRow = [...document.querySelectorAll('.news-list li')]
+  .find((row) => row.textContent.includes('Best Paper Honorable Mention Award'));
+if (hapticsAwardRow) {
+  let hoverTracked = false;
+  hapticsAwardRow.classList.add('award-news-item');
+  hapticsAwardRow.addEventListener('mouseenter', () => {
+    if (!hoverTracked) {
+      hoverTracked = true;
+      track('award_hover', hapticsAwardUrl);
+    }
+  });
+  hapticsAwardRow.addEventListener('click', (event) => {
+    if (event.target.closest('a')) return;
+    track('external_link', hapticsAwardUrl);
+    window.open(hapticsAwardUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
 track('page_view');
 
 window.addEventListener('scroll', () => {
