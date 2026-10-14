@@ -2,6 +2,19 @@ const header = document.querySelector('.topbar');
 const menuToggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-navigation');
 const backdrop = document.querySelector('.menu-backdrop');
+const ANALYTICS_ENDPOINT = 'https://jaehyeong-analytics.ghkdwogud852.workers.dev/collect';
+
+const track = (action, target = '') => {
+  const payload = JSON.stringify({ action, target, path: window.location.pathname });
+  const blob = new Blob([payload], { type: 'application/json' });
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon(ANALYTICS_ENDPOINT, blob);
+  } else {
+    fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: payload, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {});
+  }
+};
+
+track('page_view');
 
 window.addEventListener('scroll', () => {
   header?.classList.toggle('is-scrolled', window.scrollY > 20);
@@ -21,7 +34,18 @@ menuToggle?.addEventListener('click', () => {
 
 backdrop?.addEventListener('click', () => setMenuState(false));
 navigation?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => setMenuState(false));
+  link.addEventListener('click', () => {
+    track('menu_click', link.getAttribute('href') || link.textContent.trim());
+    setMenuState(false);
+  });
+});
+
+document.querySelectorAll('.publication-item').forEach((link) => {
+  link.addEventListener('click', () => track('publication_click', link.getAttribute('href') || link.textContent.trim()));
+});
+
+document.querySelectorAll('a[href$=".pdf"]').forEach((link) => {
+  link.addEventListener('click', () => track('cv_download', link.getAttribute('href') || 'CV'));
 });
 
 document.addEventListener('keydown', (event) => {

@@ -1,0 +1,9 @@
+name = "jaehyeong-analytics"
+main = "src/index.js"
+compatibility_date = "2026-10-14"
+account_id = "45fe882aa4cead3a9a27820f35d1c877"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jaehyeong-analytics"
+database_id = "b33d8022-bca6-4559-9133-6208bedf9fc6"
