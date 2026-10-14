@@ -1,17 +1,28 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jaehyeong Hwang | Researcher</title>
-  <meta name="description" content="Jaehyeong Hwang is a graduate researcher at AXIS Lab, Korea University, working on haptics, virtual reality, and human-computer interaction." />
-  <meta name="keywords" content="Jaehyeong Hwang, Jaehyeong Hwang, Korea University, AXIS Lab, haptics, virtual reality, HCI" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="theme-color" content="#f8faff" />
+  <title>Jaehyeong Hwang / 황재형 | Graduate Researcher at Korea University</title>
+  <meta name="description" content="Jaehyeong Hwang / 황재형 is a graduate researcher at AXIS Lab, Korea University, working on haptics, virtual reality, and human-computer interaction." />
+  <meta name="keywords" content="Jaehyeong Hwang, 황재형, Korea University, AXIS Lab, graduate researcher, haptics, virtual reality, human-computer interaction, HCI" />
   <meta name="author" content="Jaehyeong Hwang" />
   <link rel="canonical" href="https://jaehyeonghwang.github.io/" />
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Jaehyeong Hwang | Researcher" />
-  <meta property="og:description" content="Researcher at AXIS Lab, Korea University. Researching haptics, virtual reality, and human-computer interaction." />
+  <meta property="og:title" content="Jaehyeong Hwang / 황재형 | Graduate Researcher" />
+  <meta property="og:description" content="Graduate researcher at AXIS Lab, Korea University. Researching haptics, virtual reality, and human-computer interaction." />
   <meta property="og:url" content="https://jaehyeonghwang.github.io/" />
+  <meta property="og:site_name" content="Jaehyeong Hwang / 황재형" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://jaehyeonghwang.github.io/profile.jpg" />
+  <meta property="og:image:alt" content="Jaehyeong Hwang presenting at a conference" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jaehyeong Hwang | Graduate Researcher" />
+  <meta name="twitter:description" content="Jaehyeong Hwang / 황재형, graduate researcher at AXIS Lab, Korea University." />
+  <meta name="twitter:image" content="https://jaehyeonghwang.github.io/profile.jpg" />
   <style>
     .award-icon{width:24px;height:24px;color:#174ea6;display:grid;place-items:center;margin-top:2px}
     .award-icon svg{width:22px;height:22px;display:block}
@@ -62,13 +73,63 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jaehyeong Hwang",
-    "alternateName": "Jae-hyeong Hwang",
-    "url": "https://jaehyeonghwang.github.io/",
-    "jobTitle": "Graduate Researcher",
-    "affiliation": { "@type": "Organization", "name": "AXIS Lab, Korea University", "url": "https://axis.korea.ac.kr/" },
-    "sameAs": ["https://kr.linkedin.com/in/jaehyeong-hwang-205082207"]
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://jaehyeonghwang.github.io/#website",
+        "url": "https://jaehyeonghwang.github.io/",
+        "name": "Jaehyeong Hwang / 황재형",
+        "description": "Academic homepage of Jaehyeong Hwang, a graduate researcher at AXIS Lab, Korea University.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://jaehyeonghwang.github.io/#person",
+        "name": "Jaehyeong Hwang",
+        "alternateName": ["황재형", "Jae-hyeong Hwang"],
+        "url": "https://jaehyeonghwang.github.io/",
+        "image": "https://jaehyeonghwang.github.io/profile.jpg",
+        "jobTitle": "Graduate Researcher",
+        "description": "Graduate researcher working on haptics, virtual reality, and human-computer interaction.",
+        "worksFor": { "@id": "https://axis.korea.ac.kr/#organization" },
+        "affiliation": { "@id": "https://axis.korea.ac.kr/#organization" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Dongguk University" },
+        "knowsAbout": ["Haptics", "Virtual Reality", "Human-Computer Interaction"],
+        "sameAs": ["https://kr.linkedin.com/in/jaehyeong-hwang-205082207"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://axis.korea.ac.kr/#organization",
+        "name": "AXIS Lab, Korea University",
+        "url": "https://axis.korea.ac.kr/"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+        "url": "https://axis.korea.ac.kr/publications/2026_TVCG_PostureAdaptive",
+        "author": [
+          { "@id": "https://jaehyeonghwang.github.io/#person" },
+          { "@type": "Person", "name": "Hyeseong Jin" },
+          { "@type": "Person", "name": "Chaeyong Park" }
+        ],
+        "publisher": { "@type": "Organization", "name": "IEEE" },
+        "isPartOf": { "@type": "Periodical", "name": "IEEE Transactions on Visualization and Computer Graphics" },
+        "about": ["Virtual Reality", "Haptics", "Vibrotactile Interface"]
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
+        "url": "https://axis.korea.ac.kr/publications/2026_ISMAR_TactileMotion",
+        "author": [
+          { "@type": "Person", "name": "Hyeseong Jin" },
+          { "@id": "https://jaehyeonghwang.github.io/#person" },
+          { "@type": "Person", "name": "Chaeyong Park" }
+        ],
+        "publisher": { "@type": "Organization", "name": "IEEE" },
+        "isPartOf": { "@type": "Event", "name": "IEEE ISMAR 2026" },
+        "about": ["Virtual Reality", "Haptics", "Cybersickness"]
+      }
+    ]
   }
   </script>
   <style>.cv-subheading{padding:18px 27px 8px;color:#174ea6;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--line)}.cv-subheading:first-child{border-top:0}.education-subheading{margin-top:0}@media(max-width:700px){.cv-subheading{padding:16px 18px 7px}}</style>
