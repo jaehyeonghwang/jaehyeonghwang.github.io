@@ -13,6 +13,22 @@ const track = (action, target = '') => {
   fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: payload, headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, keepalive: true, mode: 'cors' }).catch(() => {});
 };
 
+const awardText = document.querySelector('.news-list li:first-child > span:last-child');
+const awardName = awardText?.querySelector('.award-highlight');
+const awardPercent = awardText?.querySelector('.percent-highlight');
+if (awardText && awardName && awardPercent) {
+  const awardLink = document.createElement('a');
+  awardLink.className = 'award-highlight';
+  awardLink.href = 'https://www.ieeeismar.net/2026/awards/#paper-awards-section';
+  awardLink.target = '_blank';
+  awardLink.rel = 'noopener noreferrer';
+  awardLink.title = 'IEEE ISMAR 2026 Best Paper Award';
+  awardLink.style.textDecoration = 'none';
+  awardLink.append(awardName.textContent, ' ', awardPercent);
+  awardName.replaceWith(awardLink);
+  awardLink.addEventListener('click', () => track('external_link', awardLink.href));
+}
+
 track('page_view');
 
 window.addEventListener('scroll', () => {
