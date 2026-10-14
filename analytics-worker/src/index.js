@@ -33,7 +33,7 @@ async function collect(request, env) {
   const action = typeof body.action === 'string' ? body.action.slice(0, MAX_ACTION_LENGTH) : '';
   const path = typeof body.path === 'string' ? body.path.slice(0, MAX_PATH_LENGTH) : '/';
   const target = typeof body.target === 'string' ? body.target.slice(0, MAX_TARGET_LENGTH) : null;
-  const allowedActions = new Set(['page_view', 'menu_click', 'publication_click', 'cv_download', 'external_link']);
+  const allowedActions = new Set(['page_view', 'menu_click', 'publication_click', 'cv_download', 'external_link', 'award_hover']);
   if (!allowedActions.has(action)) return json({ error: 'Unsupported action' }, 400);
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';

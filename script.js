@@ -17,6 +17,7 @@ const awardText = document.querySelector('.news-list li:first-child > span:last-
 const awardName = awardText?.querySelector('.award-highlight');
 const awardPercent = awardText?.querySelector('.percent-highlight');
 if (awardText && awardName && awardPercent) {
+  const awardRow = awardText.closest('li');
   const awardLink = document.createElement('a');
   awardLink.className = 'award-highlight';
   awardLink.href = 'https://www.ieeeismar.net/2026/awards/#paper-awards-section';
@@ -27,6 +28,19 @@ if (awardText && awardName && awardPercent) {
   awardLink.append(awardName.textContent, ' ', awardPercent);
   awardName.replaceWith(awardLink);
   awardLink.addEventListener('click', () => track('external_link', awardLink.href));
+  let hoverTracked = false;
+  awardRow?.classList.add('award-news-item');
+  awardRow?.addEventListener('mouseenter', () => {
+    if (!hoverTracked) {
+      hoverTracked = true;
+      track('award_hover', awardLink.href);
+    }
+  });
+  awardRow?.addEventListener('click', (event) => {
+    if (event.target.closest('a')) return;
+    track('external_link', awardLink.href);
+    window.open(awardLink.href, '_blank', 'noopener,noreferrer');
+  });
 }
 
 track('page_view');
