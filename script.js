@@ -6,12 +6,11 @@ const ANALYTICS_ENDPOINT = 'https://jaehyeong-analytics.ghkdwogud852.workers.dev
 
 const track = (action, target = '') => {
   const payload = JSON.stringify({ action, target, path: window.location.pathname });
-  const blob = new Blob([payload], { type: 'application/json' });
+  const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
   if (navigator.sendBeacon) {
-    navigator.sendBeacon(ANALYTICS_ENDPOINT, blob);
-  } else {
-    fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: payload, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {});
+    if (navigator.sendBeacon(ANALYTICS_ENDPOINT, blob)) return;
   }
+  fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: payload, headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, keepalive: true, mode: 'cors' }).catch(() => {});
 };
 
 track('page_view');
