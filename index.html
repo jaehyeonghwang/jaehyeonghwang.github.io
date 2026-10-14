@@ -169,6 +169,7 @@
     .menu-toggle,.menu-backdrop{display:none}
     @media(max-width:700px){
       .topbar{height:70px;min-height:70px;align-items:center;padding:0 16px!important;gap:12px}
+      body.menu-open .topbar{z-index:50}
       .site-logo{width:205px}
       .menu-toggle{display:flex;position:relative;z-index:42;width:42px;height:42px;margin-left:auto;flex:0 0 42px;align-items:center;justify-content:center;flex-direction:column;gap:5px;border:1px solid #d9e3f1;border-radius:10px;background:#fff;color:#174ea6;cursor:pointer;box-shadow:0 4px 14px rgba(23,78,166,.08)}
       .menu-toggle span{display:block;width:17px;height:1.5px;background:currentColor;transition:transform .2s,opacity .2s}
