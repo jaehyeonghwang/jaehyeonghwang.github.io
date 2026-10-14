@@ -2,4 +2,16 @@ User-agent: *
 Allow: /
 Disallow: /report.html
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /report.html
+
+User-agent: GPTBot
+Allow: /
+Disallow: /report.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /report.html
+
 Sitemap: https://jaehyeonghwang.github.io/sitemap.xml
