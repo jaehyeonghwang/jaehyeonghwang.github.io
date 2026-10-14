@@ -66,7 +66,12 @@
   </script>
   <style>.cv-subheading{padding:18px 27px 8px;color:#174ea6;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--line)}.cv-subheading:first-child{border-top:0}.education-subheading{margin-top:0}@media(max-width:700px){.cv-subheading{padding:16px 18px 7px}}</style>
   <style>.cv-tree{border:1px solid var(--line);border-radius:10px;padding:28px 32px}.tree-group+.tree-group{border-top:1px solid var(--line);margin-top:30px;padding-top:30px}.tree-institution{display:flex;align-items:center;gap:18px}.tree-institution h3{font-size:19px;margin:0;letter-spacing:-.03em}.tree-institution p{color:var(--muted);font-size:13px;margin:2px 0 0}.tree-children{position:relative;margin:20px 0 0 20px;padding-left:35px;border-left:1px solid #cbd5e1}.tree-item{position:relative;padding:0 0 22px}.tree-item:last-child{padding-bottom:0}.tree-item:before{content:"";position:absolute;left:-35px;top:12px;width:26px;border-top:1px solid #cbd5e1}.tree-item h4{font-size:16px;line-height:1.45;margin:0 0 4px}.tree-item p{font-size:13px;color:var(--muted);margin:4px 0}.tree-item .org-name,.tree-item .degree{color:var(--ink)}@media(max-width:700px){.cv-tree{padding:22px 18px}.tree-children{margin-left:14px;padding-left:25px}.tree-item:before{left:-25px;width:18px}.tree-institution h3{font-size:17px}}
-  <style>.site-name,.site-name:hover,.site-name:focus,.site-name:visited{text-decoration:none!important;border-bottom:0!important;box-shadow:none!important}</style>
+  <style>
+    .site-name,.site-name:hover,.site-name:focus,.site-name:visited{text-decoration:none!important;border-bottom:0!important;box-shadow:none!important;display:inline-flex;align-items:center;line-height:1}
+    .site-logo{display:block;width:158px;height:auto;overflow:visible}
+    .site-logo text{font-family:Inter,Arial,sans-serif;font-size:16px;font-weight:700;letter-spacing:-.65px;fill:#174ea6}
+    @media(max-width:700px){.site-logo{width:158px}}
+  </style>
   <style>
     .cv-tree{background:linear-gradient(135deg,#fff 0%,#fbfcff 100%);border-color:#e5eaf2;box-shadow:0 8px 24px rgba(23,78,166,.04)}
     .tree-institution{padding:4px 0 4px 2px}
@@ -82,7 +87,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="site-name" href="#home">Jaehyeong Hwang</a>
+    <a class="site-name" href="#home" aria-label="Jaehyeong Hwang home"><svg class="site-logo" viewBox="0 0 158 24" role="img" aria-label="Jaehyeong Hwang"><text x="0" y="17">Jaehyeong Hwang</text></svg></a>
     <nav aria-label="Main navigation"><a href="#home">About</a><a href="#publications">Publication</a><a href="#news">News</a><a href="#awards">Awards</a><a href="#education">Education</a><a href="Jaehyeong_Hwang_CV.pdf" target="_blank" rel="noreferrer">CV</a></nav>
   </header>
   <main id="home" class="page-shell">
