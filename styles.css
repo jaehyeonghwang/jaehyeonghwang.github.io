@@ -425,7 +425,7 @@ body {
 }
 .news-list a:hover,
 .news-list a:focus-visible {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .news-list li.award-news-item {
   cursor: pointer;
