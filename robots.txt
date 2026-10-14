@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jaehyeonghwang.github.io/sitemap.xml
