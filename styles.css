@@ -214,6 +214,58 @@ body {
   color: #f9ab00;
   background: #fff8e1;
 }
+.publication-status-item {
+  cursor: default;
+  grid-template-columns: 150px 1fr;
+}
+.publication-status-item:hover {
+  border-color: var(--line);
+  box-shadow: none;
+}
+.publication-badge-skeleton {
+  width: 150px;
+  height: 86px;
+  gap: 8px;
+  align-content: center;
+  justify-items: start;
+  padding: 0 18px;
+  background: #e9eff8;
+}
+.publication-badge-skeleton span {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d8e2f0 20%, #f7f9fc 50%, #d8e2f0 80%);
+  background-size: 220% 100%;
+  animation: badge-skeleton-shimmer 1.6s ease-in-out infinite;
+}
+.publication-badge-skeleton span:first-child {
+  width: 74px;
+}
+.publication-badge-skeleton span:last-child {
+  width: 104px;
+}
+@keyframes badge-skeleton-shimmer {
+  to {
+    background-position: -220% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .publication-badge-skeleton span {
+    animation: none;
+  }
+}
+.publication-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: #eef3fb;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+}
 .publication-item h3,
 .cv-main h3,
 .award-item h3 {
@@ -479,6 +531,15 @@ body {
     padding: 16px;
   }
   .publication-item:has(.publication-teaser) .publication-teaser {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  .publication-status-item {
+    display: block;
+    padding: 16px;
+  }
+  .publication-badge-skeleton {
     width: 100%;
     height: 150px;
     margin-bottom: 16px;
