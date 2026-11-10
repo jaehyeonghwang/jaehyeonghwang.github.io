@@ -163,7 +163,7 @@
           <div class="metric" id="total-events">—</div>
         </div>
         <div class="panel">
-          <div class="label">Unique IPs</div>
+          <div class="label">Unique Visitors</div>
           <div class="metric" id="total-visitors">—</div>
         </div>
       </section>
@@ -226,7 +226,7 @@
             document.querySelector("#total-visitors").textContent =
               data.totals?.visitors ?? 0;
             document.querySelector("#daily").innerHTML = table(
-              ["Date", "Events", "Unique IPs"],
+              ["Date", "Events", "Unique Visitors"],
               (data.daily || []).map(
                 (row) =>
                   `<tr><td>${escapeHtml(row.day)}</td><td>${escapeHtml(row.events)}</td><td>${escapeHtml(row.visitors)}</td></tr>`,

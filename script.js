@@ -4,12 +4,34 @@ const navigation = document.querySelector("#main-navigation");
 const backdrop = document.querySelector(".menu-backdrop");
 const ANALYTICS_ENDPOINT =
   "https://jaehyeong-analytics.ghkdwogud852.workers.dev/collect";
+const VISITOR_ID_KEY = "jaehyeong_visitor_id";
+
+const getVisitorId = () => {
+  try {
+    let visitorId = localStorage.getItem(VISITOR_ID_KEY);
+    if (!visitorId) {
+      visitorId = globalThis.crypto?.randomUUID?.();
+      if (!visitorId) {
+        const bytes = new Uint8Array(16);
+        globalThis.crypto.getRandomValues(bytes);
+        visitorId = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+      }
+      localStorage.setItem(VISITOR_ID_KEY, visitorId);
+    }
+    return visitorId;
+  } catch {
+    return "";
+  }
+};
+
+const visitorId = getVisitorId();
 
 const track = (action, target = "") => {
   const payload = JSON.stringify({
     action,
     target,
     path: window.location.pathname,
+    visitorId,
   });
   const blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
   if (navigator.sendBeacon) {

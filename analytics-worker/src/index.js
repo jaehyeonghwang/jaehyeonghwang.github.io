@@ -2,6 +2,7 @@ const ALLOWED_ORIGIN = 'https://jaehyeonghwang.github.io';
 const MAX_ACTION_LENGTH = 80;
 const MAX_PATH_LENGTH = 500;
 const MAX_TARGET_LENGTH = 500;
+const MAX_VISITOR_ID_LENGTH = 64;
 
 function corsHeaders(origin = ALLOWED_ORIGIN) {
   return {
@@ -33,21 +34,24 @@ async function collect(request, env) {
   const action = typeof body.action === 'string' ? body.action.slice(0, MAX_ACTION_LENGTH) : '';
   const path = typeof body.path === 'string' ? body.path.slice(0, MAX_PATH_LENGTH) : '/';
   const target = typeof body.target === 'string' ? body.target.slice(0, MAX_TARGET_LENGTH) : null;
+  const visitorId = typeof body.visitorId === 'string' && /^[a-f0-9-]{1,64}$/i.test(body.visitorId)
+    ? body.visitorId.slice(0, MAX_VISITOR_ID_LENGTH)
+    : null;
   const allowedActions = new Set(['page_view', 'menu_click', 'publication_click', 'cv_download', 'external_link', 'award_hover']);
   if (!allowedActions.has(action)) return json({ error: 'Unsupported action' }, 400);
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   await env.DB.prepare(
-    'INSERT INTO events (occurred_at, ip, action, path, target) VALUES (?, ?, ?, ?, ?)'
-  ).bind(new Date().toISOString(), ip, action, path, target).run();
+    'INSERT INTO events (occurred_at, ip, visitor_id, action, path, target) VALUES (?, ?, ?, ?, ?, ?)'
+  ).bind(new Date().toISOString(), ip, visitorId, action, path, target).run();
   return json({ ok: true });
 }
 
 async function report(request, env) {
   if (!authorized(request, env)) return json({ error: 'Unauthorized' }, 401);
   const [daily, totals, recent] = await Promise.all([
-    env.DB.prepare('SELECT substr(occurred_at, 1, 10) AS day, COUNT(*) AS events, COUNT(DISTINCT ip) AS visitors FROM events GROUP BY day ORDER BY day DESC LIMIT 90').all(),
-    env.DB.prepare('SELECT COUNT(*) AS events, COUNT(DISTINCT ip) AS visitors FROM events').first(),
+    env.DB.prepare("SELECT substr(occurred_at, 1, 10) AS day, COUNT(*) AS events, COUNT(DISTINCT COALESCE(visitor_id, 'ip:' || ip)) AS visitors FROM events GROUP BY day ORDER BY day DESC LIMIT 90").all(),
+    env.DB.prepare("SELECT COUNT(*) AS events, COUNT(DISTINCT COALESCE(visitor_id, 'ip:' || ip)) AS visitors FROM events").first(),
     env.DB.prepare('SELECT occurred_at, ip, action, path, target FROM events ORDER BY id DESC LIMIT 500').all()
   ]);
   return json({ daily: daily.results, totals, recent: recent.results });
